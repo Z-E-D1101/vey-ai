@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    command: node dist/gateway.js
+
+  scheduler:
+    build: .
+    env_file:
+      - .env
+    command: node dist/scheduler.js
+
+  telegram:
+    build: .
+    env_file:
+      - .env
+    command: node dist/bots/telegram.js
+
+  discord:
+    build: .
+    env_file:
+      - .env
+    command: node dist/bots/discord.js
